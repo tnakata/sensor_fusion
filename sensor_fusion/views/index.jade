@@ -3,7 +3,8 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  form(action="/process", method="GET")
     ul 
       li
-        input(type="button" name="test" value="test" onClick="test()")
+        input.process_request#temp_req1(type="button" value="send request1")
+        input.process_request#temp_req2(type="button" value="send request2")
+        input.process_request#temp_req3(type="button" value="send request3")
