@@ -1,0 +1,1 @@
+cmd_Release/obj.target/addon.node := g++ -shared -pthread -rdynamic -m32  -Wl,-soname=addon.node -o Release/obj.target/addon.node -Wl,--start-group Release/obj.target/addon/SensorFusion_Addon.o Release/obj.target/addon/SensorFusion.o Release/obj.target/addon/Vector3D.o -Wl,--end-group /usr/lib/libupm-lsm9ds0.so
