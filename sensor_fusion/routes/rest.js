@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const addon = require('../addons/c++/SensorFusion/build/Release/addon');
+var fs = require('fs');
+//const addon = require('../addons/c++/SensorFusion/build/Release/addon');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -9,7 +10,8 @@ router.get('/', function(req, res, next) {
   if(id == {})
   	res.send('Please Input request ID');
   else {
-  	res.send(addon.hello());
+	var ori = fs.readFileSync('executable/orientation_reading.txt');
+  	res.send(ori.toString());
   }
   console.log('REST request with ID of ' + id);
 });

@@ -20,18 +20,19 @@ namespace demo {
 	using v8::Value;
 	
 	void Method(const FunctionCallbackInfo<Value>& args) {
-		Vector3D acc;
+		Vector3D ori;
 		ostringstream oss;
 		
-		sensfus.getGVector(acc);
-		oss << "{\"x\": " << acc.x << "," << "\"y\": " << acc.y << "," << "\"z\": " << acc.z << "}";
+		sensfus.updateParameters();
+		ori = sensfus.getAccAngleEstimate();
+		oss << "{\"x\": " << ori.x << "," << "\"y\": " << ori.y << "," << "\"z\": " << ori.z << "}";
 
 		Isolate* isolate = args.GetIsolate();
 		args.GetReturnValue().Set(String::NewFromUtf8(isolate, oss.str().c_str()));
 	}
 
 	void init(Local<Object> exports) {
-		  NODE_SET_METHOD(exports, "hello", Method);
+		  NODE_SET_METHOD(exports, "getOrientation", Method);
 	}
 
 	NODE_MODULE(addon, init)
